@@ -11,7 +11,8 @@
     "build:test": "set NODE_ENV=test&& webpack",
     "build": "set NODE_ENV=prod&& webpack",
     "watch": "set NODE_ENV=test&& webpack --watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "prepare": "npm run build"
   },
   "keywords": [
     "leaflet",

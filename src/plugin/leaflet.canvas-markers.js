@@ -258,6 +258,7 @@ function layerFactory(L) {
 
             var options = marker.options.icon.options;
 
+            this._context.globalAlpha = marker.options?.opacity || 1;
             this._context.drawImage(
                 marker.canvas_img,
                 pointPos.x - options.iconAnchor[0],
@@ -265,6 +266,13 @@ function layerFactory(L) {
                 options.iconSize[0],
                 options.iconSize[1]
             );
+            if (marker.options?.cross === true){
+              this._context.moveTo(pointPos.x - options.iconAnchor[0], pointPos.y - options.iconAnchor[1]);
+              this._context.lineTo(pointPos.x - options.iconAnchor[0] + options.iconSize[0], pointPos.y - options.iconAnchor[1] + options.iconSize[1]);
+              this._context.strokeStyle = '#ff0000';
+              this._context.lineWidth = 3;
+              this._context.stroke();
+            }
         },
 
         _reset: function () {
